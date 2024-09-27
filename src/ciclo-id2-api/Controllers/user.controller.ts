@@ -7,7 +7,7 @@ import { CreateUserDto, UpdateUserDto } from "../Dto/user.dto";
  * 
  * @class UserController
  */
-@Controller('users')
+@Controller('users') // Ruta base para las operaciones de usuario
 export class UserController {
     /**
      * Constructor del controlador de usuarios.
@@ -26,21 +26,46 @@ export class UserController {
         return this.userService.findAll();
     }
 
+    /**
+     * Obtiene un usuario por su ID.
+     * 
+     * @param {string} id - El ID del usuario.
+     * @returns {Promise<User>} Una promesa que resuelve con el usuario encontrado.
+     */
     @Get(':id')
     async findOne(@Param('id') id: string) {
         return this.userService.findOne(id);
     }
 
+    /**
+     * Crea un nuevo usuario.
+     * 
+     * @param {CreateUserDto} createUserDto - Los datos del usuario a crear.
+     * @returns {Promise<User>} Una promesa que resuelve con el usuario creado.
+     */
     @Post()
     async create(@Body() createUserDto: CreateUserDto) {
         return this.userService.create(createUserDto);
     }
 
+    /**
+     * Actualiza un usuario existente.
+     * 
+     * @param {string} id - El ID del usuario a actualizar.
+     * @param {UpdateUserDto} updateUserDto - Los nuevos datos del usuario.
+     * @returns {Promise<User>} Una promesa que resuelve con el usuario actualizado.
+     */
     @Put(':id')
     async update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
         return this.userService.update(id, updateUserDto);
     }
 
+    /**
+     * Elimina un usuario por su ID.
+     * 
+     * @param {string} id - El ID del usuario a eliminar.
+     * @returns {Promise<void>} Una promesa que resuelve cuando el usuario ha sido eliminado.
+     */
     @Delete(':id')
     async delete(@Param('id') id: string) {
         return this.userService.delete(id);
