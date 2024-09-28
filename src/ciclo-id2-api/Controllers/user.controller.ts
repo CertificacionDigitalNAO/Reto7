@@ -64,10 +64,11 @@ export class UserController {
      * Elimina un usuario por su ID.
      * 
      * @param {string} id - El ID del usuario a eliminar.
-     * @returns {Promise<void>} Una promesa que resuelve cuando el usuario ha sido eliminado.
+     * @returns {Promise<{ message: string }>} Una promesa que resuelve con un mensaje de confirmación.
+     * @throws {HttpException} Si el usuario no es encontrado.
      */
     @Delete(':id')
-    async delete(@Param('id') id: string) {
+    async delete(@Param('id') id: string): Promise<{ message: string }> {
         const result = await this.userService.delete(id);
         if (!result) {
             throw new HttpException('Usuario no encontrado', HttpStatus.NOT_FOUND);
