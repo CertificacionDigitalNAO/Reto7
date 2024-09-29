@@ -1,3 +1,5 @@
+import { ApiProperty } from "@nestjs/swagger";
+
 /**
  * Data Transfer Object (DTO) para la creación de un usuario.
  * 
@@ -9,6 +11,7 @@ export class CreateUserDto {
      * 
      * @type {string}
      */
+    @ApiProperty({ description: 'Nombre de usuario' })
     readonly username: string;
 
     /**
@@ -16,6 +19,7 @@ export class CreateUserDto {
      * 
      * @type {string}
      */
+    @ApiProperty({ description: 'Correo electrónico del usuario' })
     readonly email: string;
 
     /**
@@ -23,6 +27,7 @@ export class CreateUserDto {
      * 
      * @type {string}
      */
+    @ApiProperty({ description: 'Contraseña del usuario' })
     readonly password: string;
 
     /**
@@ -30,6 +35,7 @@ export class CreateUserDto {
      * 
      * @type {string[]}
      */
+    @ApiProperty({ description: 'Roles del usuario', isArray: true })
     readonly roles: string[];
 }
 
@@ -45,6 +51,7 @@ export class UpdateUserDto {
      * @type {string}
      * @optional
      */
+    @ApiProperty({ description: 'Nombre de usuario', required: false })
     readonly username?: string;
 
     /**
@@ -53,6 +60,7 @@ export class UpdateUserDto {
      * @type {string}
      * @optional
      */
+    @ApiProperty({ description: 'Correo electrónico del usuario', required: false })
     readonly email?: string;
 
     /**
@@ -61,6 +69,7 @@ export class UpdateUserDto {
      * @type {string}
      * @optional
      */
+    @ApiProperty({ description: 'Contraseña del usuario', required: false })
     readonly password?: string;
 
     /**
@@ -69,5 +78,6 @@ export class UpdateUserDto {
      * @type {string[]}
      * @optional
      */
+    @ApiProperty({ description: 'Roles del usuario', isArray: true, required: false })
     readonly roles?: string[];
 }

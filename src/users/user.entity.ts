@@ -29,81 +29,36 @@ export const UserSchema = new Schema({
  * @interface User
  */
 export interface User {
-    /**
-     * Nombre de usuario.
-     * 
-     * @type {string}
-     */
     username: string;
-
-    /**
-     * Correo electrónico del usuario.
-     * 
-     * @type {string}
-     */
     email: string;
-
-    /**
-     * Contraseña del usuario.
-     * 
-     * @type {string}
-     */
     password: string;
-
-    /**
-     * Nombre del usuario.
-     * 
-     * @type {string}
-     */
     firstName: string;
-
-    /**
-     * Apellido del usuario.
-     * 
-     * @type {string}
-     */
     lastName: string;
-
-    /**
-     * Roles del usuario.
-     * 
-     * @type {string[]}
-     */
     roles: string[];
-
-    /**
-     * Fecha de creación del usuario.
-     * 
-     * @type {Date}
-     */
     createdAt: Date;
-
-    /**
-     * Fecha de última actualización del usuario.
-     * 
-     * @type {Date}
-     */
     updatedAt: Date;
-
-    /**
-     * Indica si el usuario está activo.
-     * 
-     * @type {boolean}
-     */
     isActive: boolean;
-
-    /**
-     * Fecha del último inicio de sesión del usuario.
-     * 
-     * @type {Date}
-     * @optional
-     */
     lastLogin?: Date;
+    tokens: string[];
+}
 
-    /**
-     * Tokens de autenticación del usuario.
-     * 
-     * @type {string[]}
-     */
+/**
+ * Clase de usuario.
+ * 
+ * Implementa la interfaz de usuario y puede ser utilizada en tiempo de ejecución.
+ * 
+ * @class User
+ */
+export class User implements User {
+    username: string;
+    email: string;
+    password: string;
+    firstName: string;
+    lastName: string;
+    roles: string[];
+    createdAt: Date;
+    updatedAt: Date;
+    isActive: boolean;
+    lastLogin?: Date;
     tokens: string[];
 }
