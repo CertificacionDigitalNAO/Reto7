@@ -3,10 +3,8 @@ import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { DatabaseModule } from './ciclo-id2-api/database.module';
-import { UserController } from './ciclo-id2-api/Controllers/user.controller';
-import { UserService } from './ciclo-id2-api/Services/user.service';
-import { UserSchema } from './ciclo-id2-api/Entities/user.entity';
+import { DatabaseModule } from './database/database.module';
+import { UserModule } from './users/user.module'; // Importa el módulo de usuarios
 
 @Module({
   imports: [
@@ -15,10 +13,10 @@ import { UserSchema } from './ciclo-id2-api/Entities/user.entity';
     }),
     // Configuración de conexión a MongoDB
     MongooseModule.forRoot(process.env.MONGODB_URI),
-    MongooseModule.forFeature([{ name: 'User', schema: UserSchema }]), // Registro del esquema User
     DatabaseModule,
+    UserModule, // Importa el módulo de usuarios
   ],
-  controllers: [AppController, UserController],
-  providers: [AppService, UserService],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule { }

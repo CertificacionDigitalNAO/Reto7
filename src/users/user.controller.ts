@@ -1,6 +1,6 @@
 import { Controller, Get, Post, Put, Delete, Body, Param, HttpException, HttpStatus } from "@nestjs/common";
-import { UserService } from '../Services/user.service';
-import { CreateUserDto, UpdateUserDto } from "../Dto/user.dto";
+import { UserService } from './user.service';
+import { CreateUserDto, UpdateUserDto } from "./user.dto";
 
 /**
  * Controlador para manejar las operaciones relacionadas con los usuarios.

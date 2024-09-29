@@ -1,10 +1,10 @@
 import { Module } from "@nestjs/common";
 import { MongooseModule } from "@nestjs/mongoose";
-import { UserSchema } from "./Entities/user.entity";
-import { UserService } from "./Services/user.service";
-import { UserController } from "./Controllers/user.controller";
+import { UserSchema } from "../users/user.entity";
+import { UserService } from "../users/user.service";
+import { UserController } from "../users/user.controller";
 
-console.log('MONGODB_URI:', process.env.MONGODB_URI); // Agrega esta línea para verificar
+console.log('MONGODB_URI:', process.env.MONGODB_URI);
 
 @Module({
   imports: [
@@ -14,4 +14,4 @@ console.log('MONGODB_URI:', process.env.MONGODB_URI); // Agrega esta línea para
   controllers: [UserController],
   providers: [UserService],
 })
-export class DatabaseModule {}
+export class DatabaseModule { }
