@@ -1,8 +1,9 @@
-import { Controller, Get, Post, Put, Delete, Body, Param, HttpException, HttpStatus, BadRequestException, ConflictException } from '@nestjs/common';
+import { Controller, Get, Post, Put, Delete, Body, Param, HttpException, HttpStatus, BadRequestException, ConflictException, UseGuards } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiResponse, ApiParam, ApiBody } from '@nestjs/swagger';
 import { UserService } from './user.service';
 import { CreateUserDto, UpdateUserDto } from './user.dto';
 import { User } from './user.entity';
+import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 
 /**
  * Controlador para manejar las operaciones relacionadas con los usuarios.
@@ -24,6 +25,7 @@ export class UserController {
      *
      * @returns {Promise<User[]>} Una promesa que resuelve con la lista de usuarios.
      */
+    @UseGuards(JwtAuthGuard)
     @Get()
     @ApiOperation({ summary: 'Obtener todos los usuarios' })
     @ApiResponse({ status: 200, description: 'Lista de usuarios', type: [User] })
@@ -46,6 +48,7 @@ export class UserController {
      * @returns {Promise<User>} Una promesa que resuelve con el usuario encontrado.
      * @throws {HttpException} Si el usuario no es encontrado.
      */
+    @UseGuards(JwtAuthGuard)
     @Get(':id')
     @ApiOperation({ summary: 'Obtener un usuario por ID' })
     @ApiParam({ name: 'id', description: 'ID del usuario' })
@@ -67,6 +70,7 @@ export class UserController {
      * @throws {BadRequestException} Si los datos son inválidos.
      * @throws {ConflictException} Si el usuario ya existe.
      */
+    @UseGuards(JwtAuthGuard)
     @Post()
     @ApiOperation({ summary: 'Crear un nuevo usuario' })
     @ApiBody({ type: CreateUserDto })
@@ -106,6 +110,7 @@ export class UserController {
      * @param {UpdateUserDto} updateUserDto - Los nuevos datos del usuario.
      * @returns {Promise<User>} Una promesa que resuelve con el usuario actualizado.
      */
+    @UseGuards(JwtAuthGuard)
     @Put(':id')
     @ApiOperation({ summary: 'Actualizar un usuario existente' })
     @ApiParam({ name: 'id', description: 'ID del usuario' })
@@ -137,6 +142,7 @@ export class UserController {
      * @returns {Promise<{ message: string }>} Una promesa que resuelve con un mensaje de confirmación.
      * @throws {HttpException} Si el usuario no es encontrado.
      */
+    @UseGuards(JwtAuthGuard)
     @Delete(':id')
     @ApiOperation({ summary: 'Eliminar un usuario por ID' })
     @ApiParam({ name: 'id', description: 'ID del usuario' })

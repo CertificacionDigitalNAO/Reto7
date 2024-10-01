@@ -19,5 +19,6 @@ import { UserSchema } from './user.entity';
   ],
   controllers: [UserController], // Controladores del módulo
   providers: [UserService], // Proveedores del módulo
+  exports: [UserService], // Exporta el servicio para que pueda ser inyectado en otros módulos
 })
 export class UserModule { }

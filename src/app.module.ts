@@ -4,7 +4,8 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { DatabaseModule } from './database/database.module';
-import { UserModule } from './users/user.module'; // Importa el módulo de usuarios
+import { UserModule } from './users/user.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -14,9 +15,10 @@ import { UserModule } from './users/user.module'; // Importa el módulo de usuar
     // Configuración de conexión a MongoDB
     MongooseModule.forRoot(process.env.MONGODB_URI),
     DatabaseModule,
-    UserModule, // Importa el módulo de usuarios
+    UserModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule { }
+export class AppModule {}
