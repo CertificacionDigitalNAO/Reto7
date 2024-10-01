@@ -3,7 +3,7 @@ import { UserController } from './user.controller';
 import { UserService } from './user.service';
 import { CreateUserDto, UpdateUserDto } from './user.dto';
 import { User } from './user.entity';
-import { BadRequestException, ConflictException, HttpException, HttpStatus } from '@nestjs/common';
+import { ConflictException, HttpException } from '@nestjs/common';
 
 describe('UserController', () => {
     let userController: UserController;
