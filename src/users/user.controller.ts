@@ -96,6 +96,9 @@ export class UserController {
             // Crear el nuevo usuario
             return await this.userService.create(createUserDto);
         } catch (error) {
+            if (error instanceof ConflictException) {
+                throw error;
+            }
             throw new HttpException(
                 'Error al crear el usuario',
                 HttpStatus.INTERNAL_SERVER_ERROR,

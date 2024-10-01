@@ -10,7 +10,7 @@ export class AuthService {
     private readonly usersService: UserService,
     private readonly jwtService: JwtService,
   ) {
-    console.log('JWT_SECRET:', process.env.JWT_SECRET); // Verificar que la variable de entorno se esté cargando
+    // console.log('JWT_SECRET:', process.env.JWT_SECRET); // Verificación que la variable de entorno se esté cargando
   }
 
   async register(createUserDto: CreateUserDto): Promise<User> {
