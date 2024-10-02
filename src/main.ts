@@ -18,7 +18,7 @@ async function bootstrap() {
   // Configura Swagger para la documentación de la API
   setupSwagger(app);
 
-  // Configura el servidor para servir archivos estáticos
+  // Configura el servidor para servir archivos estáticos desde Swagger UI
   app.use('/api/docs', express.static(join(__dirname, '..', 'node_modules', 'swagger-ui-dist')));
 
   // Inicia la aplicación en el puerto 3000
