@@ -19,10 +19,12 @@ async function bootstrap() {
   setupSwagger(app);
 
   // Configura el servidor para servir archivos estáticos
-  app.use('/docs', express.static(join(__dirname, '..', 'node_modules', 'swagger-ui-dist')));
+  // app.use('/docs', express.static(join(__dirname, '..', 'node_modules', 'swagger-ui-dist')));
 
   // Inicia la aplicación en el puerto 3000
-  await app.listen(3000);
+  const port = process.env.PORT || 3000;
+  await app.listen(port);
+  console.log(`Application is running on: ${await app.getUrl()}`);
 }
 
 // Llama a la función bootstrap para iniciar la aplicación
