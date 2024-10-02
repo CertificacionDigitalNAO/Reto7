@@ -21,10 +21,16 @@ async function bootstrap() {
   // Configura el servidor para servir archivos estáticos
   // app.use('/docs', express.static(join(__dirname, '..', 'node_modules', 'swagger-ui-dist')));
 
-  // Inicia la aplicación en el puerto 3000
+  // Inicia la aplicación en el puerto 3000 o en el puerto definido en la variable de entorno PORT
   const port = process.env.PORT || 3000;
-  await app.listen(port);
-  console.log(`Application is running on: ${await app.getUrl()}`);
+  await app.listen(port, '0.0.0.0'); // Escucha en todas las interfaces de red
+
+  // Obtén la URL base de la aplicación
+  const baseUrl = `http://localhost:${port}`;
+
+  // Muestra la URL completa de la documentación de Swagger
+  console.log(`Application is running on: ${baseUrl}`);
+  console.log(`Swagger UI is available at: ${baseUrl}/docs`);
 }
 
 // Llama a la función bootstrap para iniciar la aplicación
