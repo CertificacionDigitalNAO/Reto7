@@ -15,5 +15,5 @@ export function setupSwagger(app: INestApplication): void {
         .addTag('DigitalNAO') // Etiqueta para agrupar las operaciones de la API
         .build();
     const document = SwaggerModule.createDocument(app, config); // Crea el documento Swagger
-    SwaggerModule.setup('docs', app, document); // Configura la ruta para la documentación de Swagger
+    SwaggerModule.setup('api/docs', app, document); // Configura la ruta para la documentación de Swagger
 }
