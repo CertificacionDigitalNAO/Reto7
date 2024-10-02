@@ -1,8 +1,8 @@
 {
   "name": "reto7",
   "version": "0.0.1",
-  "description": "",
-  "author": "",
+  "description": "Reto 7: REST y HTTP para obtener y generar datos",
+  "author": "Luis Angel Marin Coheto",
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
@@ -26,7 +26,7 @@
     "@nestjs/jwt": "^10.2.0",
     "@nestjs/mongoose": "^10.0.10",
     "@nestjs/passport": "^10.0.3",
-    "@nestjs/platform-express": "^10.0.0",
+    "@nestjs/platform-express": "^10.4.4",
     "@nestjs/swagger": "^7.4.2",
     "mongoose": "^8.6.3",
     "passport": "^0.7.0",
@@ -35,6 +35,7 @@
     "reflect-metadata": "^0.2.0",
     "reto7": "file:",
     "rxjs": "^7.8.1",
+    "serve-static": "^1.16.2",
     "swagger-ui-express": "^5.0.1"
   },
   "devDependencies": {
