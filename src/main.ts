@@ -19,7 +19,7 @@ async function bootstrap() {
   setupSwagger(app);
 
   // Configura el servidor para servir archivos estáticos
-  app.use('/api/docs', express.static(join(__dirname, '..', 'node_modules', 'swagger-ui-dist')));
+  app.use('/docs', express.static(join(__dirname, '..', 'node_modules', 'swagger-ui-dist')));
 
   // Inicia la aplicación en el puerto 3000
   await app.listen(3000);
